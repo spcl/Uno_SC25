@@ -1,0 +1,16 @@
+Nodes 32
+Connections 14
+0->200 id 1 start 0 size 9000000
+1->200 id 2 start 10000 size 9000000
+2->200 id 3 start 20000 size 9000000
+3->200 id 4 start 30000 size 9000000
+4->200 id 5 start 40000 size 9000000
+5->200 id 6 start 50000 size 9000000
+6->200 id 7 start 60000 size 9000000
+7->200 id 8 start 70000 size 9000000
+8->200 id 9 start 80000 size 9000000
+9->200 id 10 start 90000 size 9000000
+10->200 id 11 start 100000 size 9000000
+11->200 id 12 start 110000 size 9000000
+12->200 id 13 start 120000 size 9000000
+13->200 id 14 start 130000 size 9000000
