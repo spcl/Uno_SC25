@@ -1,0 +1,1652 @@
+Seed is: 215
+queueing type is: composite
+link/hop latency is 1000000ps
+Switch latency is 0 ps
+no_of_nodes 128
+Collecting data in on
+Topology is interdc
+set_os_ratio_border is: 16
+routing strategy is: ecmp_classic
+Link speed: 100000 Mbps
+FatTree topology input file: ../lcp/configs/topos/fat_tree_100Gbps.topo
+traffic matrix input file: ../lcp/configs/tms/simple/failure2.cm
+Disabling Cwnd reduction upon retransmission
+QueueSizeRatio: 1
+LCP_FAST_INCREASE_THRESHOLD_INTRA is: 100
+LCP_FAST_INCREASE_THRESHOLD_INTER is: 2500
+Inter-DC KMax: 60
+Inter-DC KMin: 20
+LCP_ECN_ALPHA is: 0.65
+Use pacing? 1
+LCP_K (packet num) is: 6
+Using ECN for inter-DC queues
+mdRTT is: 0.0003515625
+interdc_delay is: 886500000ps
+KMin: 10
+KMax: 80
+lcpAlgo is: aimd_phantom
+PhantomQueueSize: 22400515
+Disabling fast increase
+Using ECN for inter-DC queues
+Enable erasure coding with Dst as the handler
+Parity group size is: 10
+Parity correction capacity is: 2
+All the arguments are parsed!
+---------------------------
+
+
+MTU is 4096 B
+LCP_K (bytes) is 24576 B
+Project Path "/home/tbonato/ASAP/htsim-wan-cc/paper_script/"
+Folder Name is sim/
+Before adding the inter-DC delay, the base_inter_rtt is 19.0413 us.
+BW: 100 Gbps
+Intra: 
+  RTT(ps): 14027520
+  BDP(B): 175344
+  Queue(B): 1000000
+Inter: 
+  RTT(ps): 1792041280
+  BDP(B): 22400515
+  Queue(B): 1000000
+Using subflow count 1
+Logging to uec_entry
+Loading topology from ../lcp/configs/topos/fat_tree_100Gbps.topo
+*********************
+Current tier: Tier0
+  Oversubscribed: 1
+  Downlink speed: 100.000000 Gbps
+  Radix_Down: 4
+  Radix_Up: 4
+  Downlink_Latency: 1000000 ps
+  Switch_Latency: 0 ps
+*********************
+Current tier: Tier1
+  Oversubscribed: 1
+  Downlink speed: 100.000000 Gbps
+  Radix_Down: 4
+  Radix_Up: 4
+  Downlink_Latency: 1000000 ps
+  Switch_Latency: 0 ps
+*********************
+Current tier: Tier2
+  Downlink speed: 100.000000 Gbps
+  Radix_Down: 8
+  Downlink_Latency: 1000000 ps
+  Switch_Latency: 0 ps
+*********************
+Topology load done
+Fat Tree topology with 0us links and 0us switching latency.
+no_of_tor_uplinks: 128
+no_of_agg_uplinks: 128
+No of nodes: 128
+No of pods: 8
+Hosts per pod: 16
+ToR switches per pod: 4
+Agg switches per pod: 4
+No of core switches: 16
+Tor uplinks: 128
+Agg uplinks: 128
+Tier 0 QueueSize Down 1000000 bytes
+Tier 0 QueueSize Up 1000000 bytes
+Tier 1 QueueSize Down 1000000 bytes
+Tier 1 QueueSize Up 1000000 bytes
+Tier 2 QueueSize Down 1000000 bytes
+Number of datacenters: 2
+Number of border switches: 1
+Number of core to border links: 8 - uplinks 4 - 4
+Number of links between borders: 128 - uplinks 4 
+Num links to the same border from core: 8
+Num links between borders after os_ratio_border: 8
+total switches: ToR 32 NAGG 32 NCORE 16 srv_per_tor 0
+total switches: ToR 32 NAGG 32 NCORE 16 srv_per_tor 0
+
+Creating links between ToR 0 and aggregate switch 0 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 0 and aggregate switch 1 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 0 and aggregate switch 2 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 0 and aggregate switch 3 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 1 and aggregate switch 0 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 1 and aggregate switch 1 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 1 and aggregate switch 2 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 1 and aggregate switch 3 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 2 and aggregate switch 0 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 2 and aggregate switch 1 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 2 and aggregate switch 2 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 2 and aggregate switch 3 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 3 and aggregate switch 0 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 3 and aggregate switch 1 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 3 and aggregate switch 2 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 3 and aggregate switch 3 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 4 and aggregate switch 4 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 4 and aggregate switch 5 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 4 and aggregate switch 6 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 4 and aggregate switch 7 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 5 and aggregate switch 4 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 5 and aggregate switch 5 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 5 and aggregate switch 6 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 5 and aggregate switch 7 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 6 and aggregate switch 4 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 6 and aggregate switch 5 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 6 and aggregate switch 6 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 6 and aggregate switch 7 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 7 and aggregate switch 4 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 7 and aggregate switch 5 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 7 and aggregate switch 6 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 7 and aggregate switch 7 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 8 and aggregate switch 8 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 8 and aggregate switch 9 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 8 and aggregate switch 10 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 8 and aggregate switch 11 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 9 and aggregate switch 8 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 9 and aggregate switch 9 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 9 and aggregate switch 10 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 9 and aggregate switch 11 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 10 and aggregate switch 8 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 10 and aggregate switch 9 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 10 and aggregate switch 10 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 10 and aggregate switch 11 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 11 and aggregate switch 8 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 11 and aggregate switch 9 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 11 and aggregate switch 10 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 11 and aggregate switch 11 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 12 and aggregate switch 12 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 12 and aggregate switch 13 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 12 and aggregate switch 14 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 12 and aggregate switch 15 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 13 and aggregate switch 12 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 13 and aggregate switch 13 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 13 and aggregate switch 14 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 13 and aggregate switch 15 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 14 and aggregate switch 12 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 14 and aggregate switch 13 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 14 and aggregate switch 14 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 14 and aggregate switch 15 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 15 and aggregate switch 12 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 15 and aggregate switch 13 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 15 and aggregate switch 14 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 15 and aggregate switch 15 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 16 and aggregate switch 16 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 16 and aggregate switch 17 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 16 and aggregate switch 18 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 16 and aggregate switch 19 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 17 and aggregate switch 16 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 17 and aggregate switch 17 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 17 and aggregate switch 18 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 17 and aggregate switch 19 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 18 and aggregate switch 16 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 18 and aggregate switch 17 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 18 and aggregate switch 18 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 18 and aggregate switch 19 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 19 and aggregate switch 16 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 19 and aggregate switch 17 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 19 and aggregate switch 18 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 19 and aggregate switch 19 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 20 and aggregate switch 20 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 20 and aggregate switch 21 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 20 and aggregate switch 22 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 20 and aggregate switch 23 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 21 and aggregate switch 20 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 21 and aggregate switch 21 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 21 and aggregate switch 22 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 21 and aggregate switch 23 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 22 and aggregate switch 20 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 22 and aggregate switch 21 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 22 and aggregate switch 22 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 22 and aggregate switch 23 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 23 and aggregate switch 20 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 23 and aggregate switch 21 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 23 and aggregate switch 22 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 23 and aggregate switch 23 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 24 and aggregate switch 24 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 24 and aggregate switch 25 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 24 and aggregate switch 26 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 24 and aggregate switch 27 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 25 and aggregate switch 24 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 25 and aggregate switch 25 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 25 and aggregate switch 26 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 25 and aggregate switch 27 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 26 and aggregate switch 24 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 26 and aggregate switch 25 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 26 and aggregate switch 26 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 26 and aggregate switch 27 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 27 and aggregate switch 24 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 27 and aggregate switch 25 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 27 and aggregate switch 26 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 27 and aggregate switch 27 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 28 and aggregate switch 28 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 28 and aggregate switch 29 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 28 and aggregate switch 30 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 28 and aggregate switch 31 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 29 and aggregate switch 28 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 29 and aggregate switch 29 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 29 and aggregate switch 30 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 29 and aggregate switch 31 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 30 and aggregate switch 28 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 30 and aggregate switch 29 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 30 and aggregate switch 30 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 30 and aggregate switch 31 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 31 and aggregate switch 28 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 31 and aggregate switch 29 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 31 and aggregate switch 30 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 31 and aggregate switch 31 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 0 and aggregate switch 0 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 0 and aggregate switch 1 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 0 and aggregate switch 2 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 0 and aggregate switch 3 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 1 and aggregate switch 0 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 1 and aggregate switch 1 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 1 and aggregate switch 2 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 1 and aggregate switch 3 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 2 and aggregate switch 0 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 2 and aggregate switch 1 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 2 and aggregate switch 2 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 2 and aggregate switch 3 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 3 and aggregate switch 0 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 3 and aggregate switch 1 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 3 and aggregate switch 2 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 3 and aggregate switch 3 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 4 and aggregate switch 4 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 4 and aggregate switch 5 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 4 and aggregate switch 6 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 4 and aggregate switch 7 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 5 and aggregate switch 4 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 5 and aggregate switch 5 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 5 and aggregate switch 6 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 5 and aggregate switch 7 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 6 and aggregate switch 4 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 6 and aggregate switch 5 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 6 and aggregate switch 6 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 6 and aggregate switch 7 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 7 and aggregate switch 4 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 7 and aggregate switch 5 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 7 and aggregate switch 6 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 7 and aggregate switch 7 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 8 and aggregate switch 8 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 8 and aggregate switch 9 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 8 and aggregate switch 10 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 8 and aggregate switch 11 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 9 and aggregate switch 8 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 9 and aggregate switch 9 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 9 and aggregate switch 10 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 9 and aggregate switch 11 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 10 and aggregate switch 8 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 10 and aggregate switch 9 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 10 and aggregate switch 10 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 10 and aggregate switch 11 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 11 and aggregate switch 8 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 11 and aggregate switch 9 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 11 and aggregate switch 10 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 11 and aggregate switch 11 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 12 and aggregate switch 12 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 12 and aggregate switch 13 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 12 and aggregate switch 14 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 12 and aggregate switch 15 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 13 and aggregate switch 12 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 13 and aggregate switch 13 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 13 and aggregate switch 14 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 13 and aggregate switch 15 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 14 and aggregate switch 12 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 14 and aggregate switch 13 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 14 and aggregate switch 14 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 14 and aggregate switch 15 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 15 and aggregate switch 12 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 15 and aggregate switch 13 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 15 and aggregate switch 14 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 15 and aggregate switch 15 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 16 and aggregate switch 16 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 16 and aggregate switch 17 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 16 and aggregate switch 18 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 16 and aggregate switch 19 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 17 and aggregate switch 16 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 17 and aggregate switch 17 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 17 and aggregate switch 18 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 17 and aggregate switch 19 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 18 and aggregate switch 16 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 18 and aggregate switch 17 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 18 and aggregate switch 18 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 18 and aggregate switch 19 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 19 and aggregate switch 16 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 19 and aggregate switch 17 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 19 and aggregate switch 18 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 19 and aggregate switch 19 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 20 and aggregate switch 20 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 20 and aggregate switch 21 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 20 and aggregate switch 22 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 20 and aggregate switch 23 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 21 and aggregate switch 20 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 21 and aggregate switch 21 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 21 and aggregate switch 22 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 21 and aggregate switch 23 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 22 and aggregate switch 20 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 22 and aggregate switch 21 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 22 and aggregate switch 22 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 22 and aggregate switch 23 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 23 and aggregate switch 20 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 23 and aggregate switch 21 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 23 and aggregate switch 22 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 23 and aggregate switch 23 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 24 and aggregate switch 24 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 24 and aggregate switch 25 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 24 and aggregate switch 26 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 24 and aggregate switch 27 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 25 and aggregate switch 24 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 25 and aggregate switch 25 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 25 and aggregate switch 26 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 25 and aggregate switch 27 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 26 and aggregate switch 24 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 26 and aggregate switch 25 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 26 and aggregate switch 26 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 26 and aggregate switch 27 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 27 and aggregate switch 24 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 27 and aggregate switch 25 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 27 and aggregate switch 26 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 27 and aggregate switch 27 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 28 and aggregate switch 28 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 28 and aggregate switch 29 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 28 and aggregate switch 30 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 28 and aggregate switch 31 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 29 and aggregate switch 28 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 29 and aggregate switch 29 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 29 and aggregate switch 30 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 29 and aggregate switch 31 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 30 and aggregate switch 28 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 30 and aggregate switch 29 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 30 and aggregate switch 30 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 30 and aggregate switch 31 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 31 and aggregate switch 28 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 31 and aggregate switch 29 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 31 and aggregate switch 30 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between ToR 31 and aggregate switch 31 -- ToR-to-Agg queue size: 1000000 B -- Agg-to-ToR queue size: 1000000 B.
+Creating links between aggregate 0 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 1 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 2 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 3 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 4 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 5 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 6 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 7 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 8 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 9 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 10 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 11 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 12 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 13 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 14 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 15 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 16 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 17 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 18 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 19 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 20 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 21 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 22 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 23 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 24 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 25 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 26 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 27 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 28 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 29 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 30 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 31 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 0 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 1 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 2 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 3 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 4 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 5 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 6 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 7 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 8 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 9 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 10 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 11 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 12 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 13 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 14 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 15 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 16 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 17 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 18 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 19 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 20 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 21 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 22 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 23 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 24 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 25 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 26 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 27 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 28 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 29 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 30 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between aggregate 31 and all core switches -- Agg-to-Core queue size: 1000000 B -- Core-to-Agg queue size: 1000000 B.
+Creating links between core 0 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 1 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 2 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 3 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 4 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 5 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 6 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 7 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 8 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 9 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 10 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 11 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 12 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 13 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 14 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 15 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 0 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 1 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 2 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 3 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 4 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 5 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 6 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 7 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 8 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 9 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 10 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 11 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 12 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 13 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 14 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between core 15 and border switch 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_same_border_from_core: 8
+Creating links between border switches 0 and 0 -- speed: 100 Gbps -- queue size: 1000000 B. _num_links_between_borders: 8
+
+FatTree constructor done, 128 nodes created
+
+Setting intra queuesize to 1000000
+Setting inter queuesize to 1000000
+Loading connection matrix from  ../lcp/configs/tms/simple/failure2.cm
+Nodes: 256 Connections: 23 Triggers: 0 Failures: 0
+From 81 to 195
+  Flowid: 1
+  Start: 1663000000
+  Size: 180039108
+################################
+From 7 to 236
+  Flowid: 2
+  Start: 3336000000
+  Size: 48951871
+################################
+From 198 to 76
+  Flowid: 3
+  Start: 4018000000
+  Size: 148193430
+################################
+From 252 to 212
+  Flowid: 4
+  Start: 12253000000
+  Size: 93
+################################
+From 1 to 185
+  Flowid: 5
+  Start: 12959000000
+  Size: 6899038
+################################
+From 5 to 59
+  Flowid: 6
+  Start: 16526000000
+  Size: 259
+################################
+From 43 to 196
+  Flowid: 7
+  Start: 16694000000
+  Size: 2213906
+################################
+From 223 to 37
+  Flowid: 8
+  Start: 18774000000
+  Size: 49697065
+################################
+From 248 to 51
+  Flowid: 9
+  Start: 20207000000
+  Size: 98965719
+################################
+From 178 to 208
+  Flowid: 10
+  Start: 20749000000
+  Size: 4058
+################################
+From 227 to 63
+  Flowid: 11
+  Start: 20831000000
+  Size: 51670796
+################################
+From 25 to 202
+  Flowid: 12
+  Start: 24001000000
+  Size: 199210280
+################################
+From 154 to 3
+  Flowid: 13
+  Start: 26562000000
+  Size: 171971901
+################################
+From 212 to 70
+  Flowid: 14
+  Start: 26675000000
+  Size: 1610393
+################################
+From 173 to 40
+  Flowid: 15
+  Start: 30118000000
+  Size: 1959714
+################################
+From 5 to 107
+  Flowid: 16
+  Start: 30287000000
+  Size: 76
+################################
+From 160 to 99
+  Flowid: 17
+  Start: 30917000000
+  Size: 48327264
+################################
+From 124 to 58
+  Flowid: 18
+  Start: 33855000000
+  Size: 303
+################################
+From 175 to 188
+  Flowid: 19
+  Start: 36319000000
+  Size: 156
+################################
+From 124 to 143
+  Flowid: 20
+  Start: 37548000000
+  Size: 44076687
+################################
+From 126 to 252
+  Flowid: 21
+  Start: 37603000000
+  Size: 34348525
+################################
+From 35 to 190
+  Flowid: 22
+  Start: 37904000000
+  Size: 11907197
+################################
+From 186 to 25
+  Flowid: 23
+  Start: 38533000000
+  Size: 2407017
+################################
+Number of flows: 23
+Flow from 81 to 195 is Inter-DC (ID: 1, size: 180039108). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_81_195_1 is 1663000000
+Flow from 7 to 236 is Inter-DC (ID: 2, size: 48951871). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_7_236_2 is 3336000000
+Flow from 198 to 76 is Inter-DC (ID: 3, size: 148193430). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_198_76_3 is 4018000000
+Flow from 252 to 212 is Intra-DC (ID: 4, size: 93). Using intra-LCP
+BDP is 175344
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 175344.000000
+CWND2 HERE IS 175344.000000
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),175
+Baremetal RTT (us),14
+Target RTT (us),14
+QA Trigger RTT (us),86
+Target QDELAY (ns),701
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,175.344
+K (bytes),24576
+Fast Increase Threshold,100
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.491717
+Multiplicative Decrease Gain for RTT,0.0454545
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),400
+USE_PER_ACK_MD,0
+RTO (us),414.028
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 175344.000000 while BDP is 175344 -- mAx 175344
+MD GAIN IS 0.491717
+StartTime lcp_252_212_4 is 12253000000
+Flow from 1 to 185 is Inter-DC (ID: 5, size: 6899038). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_1_185_5 is 12959000000
+Flow from 5 to 59 is Intra-DC (ID: 6, size: 259). Using intra-LCP
+BDP is 175344
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 175344.000000
+CWND2 HERE IS 175344.000000
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),175
+Baremetal RTT (us),14
+Target RTT (us),14
+QA Trigger RTT (us),86
+Target QDELAY (ns),701
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,175.344
+K (bytes),24576
+Fast Increase Threshold,100
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.491717
+Multiplicative Decrease Gain for RTT,0.0454545
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),400
+USE_PER_ACK_MD,0
+RTO (us),414.028
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 175344.000000 while BDP is 175344 -- mAx 175344
+MD GAIN IS 0.491717
+StartTime lcp_5_59_6 is 16526000000
+Flow from 43 to 196 is Inter-DC (ID: 7, size: 2213906). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_43_196_7 is 16694000000
+Flow from 223 to 37 is Inter-DC (ID: 8, size: 49697065). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_223_37_8 is 18774000000
+Flow from 248 to 51 is Inter-DC (ID: 9, size: 98965719). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_248_51_9 is 20207000000
+Flow from 178 to 208 is Intra-DC (ID: 10, size: 4058). Using intra-LCP
+BDP is 175344
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 175344.000000
+CWND2 HERE IS 175344.000000
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),175
+Baremetal RTT (us),14
+Target RTT (us),14
+QA Trigger RTT (us),86
+Target QDELAY (ns),701
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,175.344
+K (bytes),24576
+Fast Increase Threshold,100
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.491717
+Multiplicative Decrease Gain for RTT,0.0454545
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),400
+USE_PER_ACK_MD,0
+RTO (us),414.028
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 175344.000000 while BDP is 175344 -- mAx 175344
+MD GAIN IS 0.491717
+StartTime lcp_178_208_10 is 20749000000
+Flow from 227 to 63 is Inter-DC (ID: 11, size: 51670796). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_227_63_11 is 20831000000
+Flow from 25 to 202 is Inter-DC (ID: 12, size: 199210280). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_25_202_12 is 24001000000
+Flow from 154 to 3 is Inter-DC (ID: 13, size: 171971901). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_154_3_13 is 26562000000
+Flow from 212 to 70 is Inter-DC (ID: 14, size: 1610393). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_212_70_14 is 26675000000
+Flow from 173 to 40 is Inter-DC (ID: 15, size: 1959714). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_173_40_15 is 30118000000
+Flow from 5 to 107 is Intra-DC (ID: 16, size: 76). Using intra-LCP
+BDP is 175344
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 175344.000000
+CWND2 HERE IS 175344.000000
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),175
+Baremetal RTT (us),14
+Target RTT (us),14
+QA Trigger RTT (us),86
+Target QDELAY (ns),701
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,175.344
+K (bytes),24576
+Fast Increase Threshold,100
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.491717
+Multiplicative Decrease Gain for RTT,0.0454545
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),400
+USE_PER_ACK_MD,0
+RTO (us),414.028
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 175344.000000 while BDP is 175344 -- mAx 175344
+MD GAIN IS 0.491717
+StartTime lcp_5_107_16 is 30287000000
+Flow from 160 to 99 is Inter-DC (ID: 17, size: 48327264). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_160_99_17 is 30917000000
+Flow from 124 to 58 is Intra-DC (ID: 18, size: 303). Using intra-LCP
+BDP is 175344
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 175344.000000
+CWND2 HERE IS 175344.000000
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),175
+Baremetal RTT (us),14
+Target RTT (us),14
+QA Trigger RTT (us),86
+Target QDELAY (ns),701
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,175.344
+K (bytes),24576
+Fast Increase Threshold,100
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.491717
+Multiplicative Decrease Gain for RTT,0.0454545
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),400
+USE_PER_ACK_MD,0
+RTO (us),414.028
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 175344.000000 while BDP is 175344 -- mAx 175344
+MD GAIN IS 0.491717
+StartTime lcp_124_58_18 is 33855000000
+Flow from 175 to 188 is Intra-DC (ID: 19, size: 156). Using intra-LCP
+BDP is 175344
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 175344.000000
+CWND2 HERE IS 175344.000000
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),175
+Baremetal RTT (us),14
+Target RTT (us),14
+QA Trigger RTT (us),86
+Target QDELAY (ns),701
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,175.344
+K (bytes),24576
+Fast Increase Threshold,100
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.491717
+Multiplicative Decrease Gain for RTT,0.0454545
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),400
+USE_PER_ACK_MD,0
+RTO (us),414.028
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 175344.000000 while BDP is 175344 -- mAx 175344
+MD GAIN IS 0.491717
+StartTime lcp_175_188_19 is 36319000000
+Flow from 124 to 143 is Inter-DC (ID: 20, size: 44076687). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_124_143_20 is 37548000000
+Flow from 126 to 252 is Inter-DC (ID: 21, size: 34348525). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_126_252_21 is 37603000000
+Flow from 35 to 190 is Inter-DC (ID: 22, size: 11907197). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_35_190_22 is 37904000000
+Flow from 186 to 25 is Inter-DC (ID: 23, size: 2407017). 
+Using inter-LCP
+Setting use_rtt for lcp's inter-dc flows to false since we have inter-DC ECN
+BDP is 22400515
+Starting cwnd is 1.000000
+Starting cwnd bdp ratio is 1.000000
+CWND3 HERE IS 22400516.000000
+CWND2 HERE IS 22400516.000000
+md_factor_rtt is over-written to a constant value: 0.000351563 but this should only happen for epoch_type == short
+cc_algorithm_type,lcp
+Link speed (Gbps),100
+BDP (KB),22400
+Baremetal RTT (us),1792
+Target RTT (us),1881
+QA Trigger RTT (us),1864
+Target QDELAY (ns),89601
+MSS (bytes),4096
+Max Queueing Latency (us),80
+Starting cwnd (bytes),1
+Queue Size (bytes),1000000
+AI Bytes,22400.5
+K (bytes),24576
+Fast Increase Threshold,2500
+Use Quick Adapt,1
+Reduce Cwnd at Timeout,0
+Use Pacing,1
+Use Fast Increase,0
+Use RTT in epochEnd,0
+Use ECN in epochEnd,1
+Applying AI per epoch,0
+Use Trimming,0
+Pacing Bonus,0
+Multiplicative Decrease Gain for ECN,0.00438366
+Multiplicative Decrease Gain for RTT,0.000351563
+QA_CWND_RATIO_THRESHOLD,0.5
+TARGET_TO_BAREMETAL_RATIO,1.05
+STARTING_CWND_BDP_RATIO,1
+USE_ERASURE_CODING,1
+EC_handler,dst
+EC Timer (us),640
+USE_PER_ACK_MD,0
+RTO (us),2432.04
+Apply MIMD,0
+inter bdp / intra bdp,127.752
+Current CWND is 22400516.000000 while BDP is 22400515 -- mAx 22400515
+MD GAIN IS 0.004384
+StartTime lcp_186_25_23 is 38533000000
+
+Entering the event running loop
+LcpSrc::Starting flow (ID: 1, size: 180039108) at time 1663us
+Using erasure coding. For every 8 packets, we are adding 2 packets as parity. Thus, flow size increases from 180039108B to 225075200B and highest possible parity_id is 5496
+New flow size 225075200 225075200
+LcpSrc::Starting flow (ID: 2, size: 48951871) at time 3336us
+Using erasure coding. For every 8 packets, we are adding 2 packets as parity. Thus, flow size increases from 48951871B to 61194240B and highest possible parity_id is 1495
+New flow size 61194240 61194240
+LcpSrc::Starting flow (ID: 3, size: 148193430) at time 4018us
+Using erasure coding. For every 8 packets, we are adding 2 packets as parity. Thus, flow size increases from 148193430B to 185262080B and highest possible parity_id is 4524

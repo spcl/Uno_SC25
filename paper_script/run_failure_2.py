@@ -53,7 +53,7 @@ def run_benchmark(cm_file, variant):
             "-phantom_slowdown", "5",
             "-phantom_kmin", "2",
             "-phantom_kmax", "60",
-            "-forceQueueSize", "10000000",
+            "-forceQueueSize", "1000000",
             "-noFi"
         ]
     elif variant == "UnoLB":
@@ -94,7 +94,7 @@ def run_benchmark(cm_file, variant):
             "-phantom_slowdown", "5",
             "-phantom_kmin", "2",
             "-phantom_kmax", "60",
-            "-forceQueueSize", "10000000",
+            "-forceQueueSize", "1000000",
             "-noFi"
         ]
     elif variant == "UnoEC":
@@ -134,9 +134,8 @@ def run_benchmark(cm_file, variant):
             "-phantom_slowdown", "5",
             "-phantom_kmin", "2",
             "-phantom_kmax", "60",
-            "-forceQueueSize", "10000000",
+            "-forceQueueSize", "1000000",
             "-noFi",
-            "-multiple_failures",
             "-erasureDst",
             "-parityGroup", "10",
             "-parityCorrect", "2"
@@ -160,7 +159,7 @@ def run_benchmark(cm_file, variant):
             "-noFi",
             "-noQaInter",
             "-noQaIntra",
-            "-forceQueueSize", "10000000",
+            "-forceQueueSize", "1000000",
             "-interKmin", "25",
             "-interKmax", "75",
             "-kmin", "25",
@@ -195,7 +194,7 @@ def run_benchmark(cm_file, variant):
             "-noFi",
             "-noQaInter",
             "-noQaIntra",
-            "-forceQueueSize", "10000000",
+            "-forceQueueSize", "1000000",
             "-interKmin", "25",
             "-interKmax", "75",
             "-end_time", "12860",
@@ -213,8 +212,8 @@ def run_benchmark(cm_file, variant):
         raise ValueError(f"Unknown variant: {variant}")
     
     # Add the -multiple_failures parameter for all runs if not already present
-    if "-multiple_failures" not in cmd:
-        cmd.append("-multiple_failures")
+    if "-fail_one" not in cmd:
+        cmd.append("-fail_one")
     
     with open(output_file, "w") as out:
         print(f"Running benchmark ({variant}) with: {' '.join(cmd)}")
@@ -302,8 +301,8 @@ def plot_results(bench_results):
     ax.legend()
     
     plt.tight_layout()
-    plt.savefig("uno_random_fail.png", dpi=300)
-    plt.savefig("uno_random_fail.pdf", dpi=300)
+    plt.savefig("uno_random_fail2.png", dpi=300)
+    plt.savefig("uno_random_fail2.pdf", dpi=300)
     plt.show()
 
 def main():
@@ -312,7 +311,7 @@ def main():
     args = parser.parse_args()
     
     cm_files = [
-        "../lcp/configs/tms/simple/failure2.cm"
+        "../lcp/configs/tms/simple/failure3.cm"
     ]
     
     # Update the variants list to include "UnoEC"

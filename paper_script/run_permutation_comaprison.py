@@ -13,14 +13,13 @@ def run_benchmark(cm_file, variant):
     output_file = f"{variant}_{base_name}.tmp"
     logging_folder = os.path.join("..", "phantomQ", f"{base_name}_{variant}")
 
-    os_value = "16"
-    seed = "42"
+    os_value = "1"
     
     if variant == "uno":
         cmd = [
             "../sim/datacenter/htsim_lcp_entry_modern",
             "-o", "uec_entry",
-            "-seed", seed,
+            "-seed", "215",
             "-queue_type", "composite",
             "-hop_latency", "1000",
             "-switch_latency", "0",
@@ -28,7 +27,7 @@ def run_benchmark(cm_file, variant):
             "-collect_data", "0",
             "-topology", "interdc",
             "-os_border", os_value,
-            "-strat", "rand",
+            "-strat", "ecmp_classic",
             "-linkspeed", "100000",
             "-topo", "../lcp/configs/topos/fat_tree_100Gbps.topo",
             "-tm", cm_file,
@@ -40,7 +39,7 @@ def run_benchmark(cm_file, variant):
             "-interKmin", "20",
             "-ecnAlpha", "0.65",
             "-usePacing", "1",
-            "-end_time", "12860",
+            "-end_time", "2860",
             "-lcpK", "6",
             "-interEcn",
             "-mdRTT", "0.0003515625",
@@ -53,14 +52,14 @@ def run_benchmark(cm_file, variant):
             "-phantom_slowdown", "5",
             "-phantom_kmin", "2",
             "-phantom_kmax", "60",
-            "-forceQueueSize", "10000000",
+            "-forceQueueSize", "1000000",
             "-noFi"
         ]
     elif variant == "UnoLB":
         cmd = [
             "../sim/datacenter/htsim_lcp_entry_modern",
             "-o", "uec_entry",
-            "-seed", seed,
+            "-seed", "215",
             "-queue_type", "composite",
             "-hop_latency", "1000",
             "-switch_latency", "0",
@@ -81,7 +80,7 @@ def run_benchmark(cm_file, variant):
             "-interKmin", "20",
             "-ecnAlpha", "0.65",
             "-usePacing", "1",
-            "-end_time", "12860",
+            "-end_time", "2860",
             "-lcpK", "6",
             "-interEcn",
             "-mdRTT", "0.0003515625",
@@ -94,52 +93,8 @@ def run_benchmark(cm_file, variant):
             "-phantom_slowdown", "5",
             "-phantom_kmin", "2",
             "-phantom_kmax", "60",
-            "-forceQueueSize", "10000000",
+            "-forceQueueSize", "1000000",
             "-noFi"
-        ]
-    elif variant == "UnoEC":
-        cmd = [
-            "../sim/datacenter/htsim_lcp_entry_modern",
-            "-o", "uec_entry",
-            "-seed", seed,
-            "-queue_type", "composite",
-            "-hop_latency", "1000",
-            "-switch_latency", "0",
-            "-nodes", "128",
-            "-collect_data", "0",
-            "-topology", "interdc",
-            "-os_border", os_value,
-            "-strat", "ecmp_classic",
-            "-linkspeed", "100000",
-            "-topo", "../lcp/configs/topos/fat_tree_100Gbps.topo",
-            "-tm", cm_file,
-            "-noRto",
-            "-queueSizeRatio", "1",
-            "-IntraFiT", "100",
-            "-InterFiT", "2500",
-            "-interKmax", "60",
-            "-interKmin", "20",
-            "-ecnAlpha", "0.65",
-            "-usePacing", "1",
-            "-end_time", "12860",
-            "-lcpK", "6",
-            "-interEcn",
-            "-mdRTT", "0.0003515625",
-            "-interdcDelay", "886500",
-            "-kmin", "10",
-            "-kmax", "80",
-            "-lcpAlgo", "aimd_phantom",
-            "-use_phantom", "1",
-            "-phantom_size", "22400515",
-            "-phantom_slowdown", "5",
-            "-phantom_kmin", "2",
-            "-phantom_kmax", "60",
-            "-forceQueueSize", "10000000",
-            "-noFi",
-            "-multiple_failures",
-            "-erasureDst",
-            "-parityGroup", "10",
-            "-parityCorrect", "2"
         ]
     elif variant == "gemini":
         cmd = [
@@ -160,14 +115,14 @@ def run_benchmark(cm_file, variant):
             "-noFi",
             "-noQaInter",
             "-noQaIntra",
-            "-forceQueueSize", "10000000",
+            "-forceQueueSize", "1000000",
             "-interKmin", "25",
             "-interKmax", "75",
             "-kmin", "25",
             "-kmax", "75",
             "-ecnAlpha", "0.5",
             "-usePacing", "1",
-            "-end_time", "12860",
+            "-end_time", "2860",
             "-lcpK", "6",
             "-interAlgo", "gemini",
             "-intraAlgo", "gemini",
@@ -195,10 +150,10 @@ def run_benchmark(cm_file, variant):
             "-noFi",
             "-noQaInter",
             "-noQaIntra",
-            "-forceQueueSize", "10000000",
+            "-forceQueueSize", "1000000",
             "-interKmin", "25",
             "-interKmax", "75",
-            "-end_time", "12860",
+            "-end_time", "2860",
             "-kmin", "25",
             "-kmax", "75",
             "-ecnAlpha", "0.5",
@@ -211,10 +166,6 @@ def run_benchmark(cm_file, variant):
         ]
     else:
         raise ValueError(f"Unknown variant: {variant}")
-    
-    # Add the -multiple_failures parameter for all runs if not already present
-    if "-multiple_failures" not in cmd:
-        cmd.append("-multiple_failures")
     
     with open(output_file, "w") as out:
         print(f"Running benchmark ({variant}) with: {' '.join(cmd)}")
@@ -253,10 +204,10 @@ def parse_metrics(output_file):
 
 def plot_results(bench_results):
     # bench_results is a dict keyed by base_name; for each benchmark it maps each variant
-    # to a tuple: (avg_fct, p99_fct). Now including 3 algorithms.
-    algo_keys = ["uno", "UnoLB", "UnoEC"]
-    algo_names = ["Uno+Spraying", "Uno-EC", "Uno+EC"]
-    colors = ["#b391b5", "#99d2f2", "#a3db8d", "#4494e4", "#ff8f80"]
+    # to a tuple: (avg_fct, p99_fct). We now include 4 algorithms.
+    algo_keys = ["uno", "UnoLB", "gemini", "bbr"]
+    algo_names = ["Uno+ECMP", "Uno", "Gemini", "MPRDMA+BBR"]
+    colors = ["#b391b5", "#99d2f2", "#4494e4", "#ff8f80"]
     metrics = ["Avg FCT", "P99 FCT"]
 
     import matplotlib.pyplot as plt
@@ -269,41 +220,43 @@ def plot_results(bench_results):
     x = np.arange(len(metrics))  # positions for "Avg FCT" and "P99 FCT"
 
     for base, variants in bench_results.items():
+        # Place grid lines behind the bars
         ax.set_axisbelow(True)
         for i, algo in enumerate(algo_keys):
             avg_val, p99_val = variants.get(algo, (None, None))
+            # Replace None values with 0 so matplotlib can plot them
             avg_val = avg_val if avg_val is not None else 0
             p99_val = p99_val if p99_val is not None else 0
             values = [avg_val, p99_val]
+            # Center bars over x positions by centering the set of bars
             offset = (i - (len(algo_keys) - 1) / 2) * bar_width
             bars = ax.bar(x + offset, values, bar_width,
                           label=algo_names[i],
                           color=colors[i])
+            # Annotate each bar with its value (two decimal digits) in the same color as the bar
             for bar in bars:
                 height = bar.get_height()
                 ax.annotate(f"{height:.1f}",
                             xy=(bar.get_x() + bar.get_width() / 2, height),
-                            xytext=(0, 3),  # 3 points vertical offset
+                            xytext=(0, 3),
                             textcoords="offset points",
                             ha="center", va="bottom",
                             fontsize=10,
                             color=colors[i])
         
+        ylim = ax.get_ylim()
+        ax.set_ylim(ylim[0], ylim[1]*1.025)
         ax.set_xticks(x)
         ax.set_xticklabels(metrics)
         ax.set_ylabel("Completion Time (ms)")
+        # Place the legend inside the plot (only one Axes) at the bottom center with 2 columns.
+        ax.legend(ncol=1, loc='lower center', bbox_to_anchor=(0.31, 0.57))
         ax.grid(axis='y', linestyle='--', linewidth=0.5)
-
-    # Increase upper y-limit to give space for annotations
-    ylim = ax.get_ylim()
-    ax.set_ylim(ylim[0], ylim[1]*1.1)
-    
-    # Add the legend back to the plot
-    ax.legend()
+        
     
     plt.tight_layout()
-    plt.savefig("uno_random_fail.png", dpi=300)
-    plt.savefig("uno_random_fail.pdf", dpi=300)
+    plt.savefig("permutation_fct_128.png", dpi=300)
+    plt.savefig("permutation_fct_128.pdf", dpi=300)
     plt.show()
 
 def main():
@@ -311,14 +264,15 @@ def main():
     parser.add_argument("--plot-only", action="store_true", help="Only plot results, without running simulations")
     args = parser.parse_args()
     
+    # List of .cm files used for benchmark simulations
     cm_files = [
-        "../lcp/configs/tms/simple/failure2.cm"
+        "../lcp/configs/tms/simple/custom_256_5mb.cm"
     ]
     
-    # Update the variants list to include "UnoEC"
-    variants = ["uno", "UnoLB", "UnoEC"]
+    variants = ["uno", "UnoLB", "gemini", "bbr"]
     bench_results = {}
     
+    # Define the number of worker threads we want to use
     MAX_WORKERS = 9
     
     if not args.plot_only:
@@ -342,6 +296,7 @@ def main():
                 except Exception as e:
                     print(f"Error running benchmark for {cm} variant {variant}: {e}")
     else:
+        # When plotting only, assume output files exist
         for cm in cm_files:
             base_name = os.path.splitext(os.path.basename(cm))[0]
             bench_results[base_name] = {}
@@ -350,6 +305,7 @@ def main():
                 avg, p99 = parse_metrics(outfile)
                 bench_results[base_name][variant] = (avg, p99)
     
+    # Sort by base_name to enforce subplot order
     bench_results = dict(sorted(bench_results.items()))
     plot_results(bench_results)
 
