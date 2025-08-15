@@ -6,6 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import argparse
 import re
+import matplotlib
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
 
 def run_benchmark(cm_file, variant, seed):
     base_name = os.path.splitext(os.path.basename(cm_file))[0]
@@ -20,7 +23,7 @@ def run_benchmark(cm_file, variant, seed):
     os_value = "16"
     
     common = [
-        "../sim/datacenter/htsim_lcp_entry_modern",
+        "sim/datacenter/htsim_lcp_entry_modern",
         "-o", "uec_entry",
         "-seed", str(seed),
         "-queue_type", "composite",
@@ -31,7 +34,7 @@ def run_benchmark(cm_file, variant, seed):
         "-topology", "interdc",
         "-os_border", os_value,
         "-linkspeed", "100000",
-        "-topo", "../lcp/configs/topos/fat_tree_100Gbps.topo",
+        "-topo", "lcp/configs/topos/fat_tree_100Gbps.topo",
         "-tm", cm_file,
         "-noRto",
         "-queueSizeRatio", "1",
@@ -196,12 +199,12 @@ def plot_results(bench_results):
     ax.set_axisbelow(True)
 
     # Save plots in the "results_ai" subfolder (create if necessary)
-    results_folder = "results_ai"
+    results_folder = "artifact_results/fig12/"
     if not os.path.exists(results_folder):
         os.makedirs(results_folder)
-    plt.savefig(os.path.join(results_folder, "ai_violin.png"), dpi=300, bbox_inches="tight")
-    plt.savefig(os.path.join(results_folder, "ai_violin.pdf"), dpi=300, bbox_inches="tight")
-    plt.show()
+    plt.savefig(os.path.join(results_folder, "ai_violin_mult_fail.png"), dpi=300, bbox_inches="tight")
+    plt.savefig(os.path.join(results_folder, "ai_violin_mult_fail.pdf"), dpi=300, bbox_inches="tight")
+    #plt.show()
 
 def main():
     parser = argparse.ArgumentParser(description="Run benchmark simulations and plot flow completion times")
@@ -209,11 +212,11 @@ def main():
     parser.add_argument("--inter-only", action="store_true", help="Only consider flows going across datacenters")
     args = parser.parse_args()
     
-    cm_files = ["../lcp/configs/tms/simple/ai.cm"]
+    cm_files = ["lcp/configs/tms/simple/ai.cm"]
     variants = ["spraying", "spraying_ec", "uno", "uno_ec", "plb", "plb_ec"]
 
     # Set the number of seeds as a variable (50)
-    num_seeds = 5
+    num_seeds = 10
     start_seed = 111
     seeds = list(range(start_seed, start_seed + num_seeds))
     

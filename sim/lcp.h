@@ -240,6 +240,14 @@ class LcpSrc : public PacketSink, public EventSource, public TriggerTarget {
 
     int number_retx = 0;
 
+    // PLB
+    int plb_entropy = 0;
+    int plb_congested_rounds = 0;
+    double plb_congested = 0;
+    double plb_delivered = 0;
+    simtime_picosec plb_last_rtt = 0;
+    simtime_picosec plb_timeout_wait = 0;
+
 
     static uint64_t _switch_queue_size;
     simtime_picosec last_adjust_ts;

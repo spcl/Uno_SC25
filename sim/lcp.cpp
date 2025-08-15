@@ -22,7 +22,7 @@ double LcpSrc::starting_cwnd = 1;
 int LcpSrc::precision_ts = 1;
 uint64_t LcpSrc::_switch_queue_size = 0;
 int LcpSrc::freq = 1;
-uint16_t LcpSrc::_total_subflows = 16;
+uint16_t LcpSrc::_total_subflows = 10;
 bool LcpSrc::_subflow_adaptive_reroute = false;
 bool LcpSrc::using_dctcp = false;
 int LcpSrc::force_cwnd = 0;
@@ -30,7 +30,7 @@ std::string LcpSrc::phantom_algo = "standard";
 std::string LcpSrc::lcp_type = "aimd";
 bool LcpSrc::smooth_ecn = false;
 
-bool LcpSrc::_subflow_reroute = false;
+bool LcpSrc::_subflow_reroute = true;
 
 RouteStrategy LcpSrc::_route_strategy = NOT_SET;
 RouteStrategy LcpSink::_route_strategy = NOT_SET;
@@ -779,8 +779,28 @@ void LcpSrc::processParityNack(UecNack &pkt) {
 
     _list_nack.push_back(std::make_pair(eventlist().now() / 1000, 1));
 
-    printf("Received Parity NACK for %d at %lu\n", pkt.nack_parity_id, eventlist().now() / 1000);
 
+    if (_subflow_reroute) {
+        int old_entropy = pkt.subflow_number;
+
+        for (int i = 0; i < _subflow_last_ack.size(); i++) {
+            if ((eventlist().now()) - _subflow_last_reroute[i] > _base_rtt && 
+                (eventlist().now()) - _subflow_last_ack[i] > _base_rtt * 0.5) {
+                _subflow_last_reroute[i] = eventlist().now();
+                _subflow_entropies[i] = rand() % 250;
+            } 
+        }                         
+    }
+
+    if (_route_strategy == PLB) {
+        if (eventlist().now() > plb_timeout_wait) {
+            plb_timeout_wait = eventlist().now() + _rto;
+            plb_congested_rounds = 0;
+            plb_entropy = rand() % 250;
+        }
+    }
+
+    /* printf("Received Parity NACK for %d at %lu\n", pkt.nack_parity_id, eventlist().now() / 1000);
 
     simtime_picosec max_time = 0;
     int max_time_index = -1;
@@ -802,7 +822,7 @@ void LcpSrc::processParityNack(UecNack &pkt) {
             _subflow_entropies[i] = _subflow_entropies[max_time_index];
             _subflow_last_reroute[i] = eventlist().now();
         }
-    }
+    } */
 
     
     for (std::size_t i = 0; i < _sent_packets.size(); ++i) {
@@ -911,7 +931,17 @@ int LcpSrc::choose_route() {
         assert(_paths.size() > 0);
         _crt_path = random() % _paths.size();
         break;
+    case PLB: {
+        int plb_n = 1;
+        int plb_m = 1;
 
+        if (plb_congested_rounds > plb_n) {
+            plb_congested_rounds = 0;
+            plb_entropy = rand() % 250;
+        } 
+        _crt_path = plb_entropy;
+        break;
+    }
     case SIMPLE_SUBFLOW:
         _current_subflow = (_current_subflow + 1) % _subflow_entropies.size();
         _crt_path = _subflow_entropies[_current_subflow];
@@ -1099,6 +1129,26 @@ void LcpSrc::processAck(UecAck &pkt, bool force_marked) {
     bool pkt_ecn_marked = pkt.flags() & ECN_ECHO;   // ECN was marked on data packet and echoed on ACK
 
     
+    if (_route_strategy == PLB) {
+        plb_delivered += 4096;
+        if (pkt_ecn_marked) {
+            plb_congested += 4096;
+        }
+
+        double plb_k = 0.25;
+
+        if (eventlist().now() > plb_last_rtt) {
+            if (plb_congested > plb_k * plb_delivered) {
+                plb_congested_rounds++;
+            } else {
+                plb_congested_rounds = 0;
+            }  
+            plb_delivered = 0;
+            plb_congested = 0;
+            plb_last_rtt = eventlist().now() + _base_rtt;
+        }
+    }
+
     if (pkt_ecn_marked && COLLECT_DATA)
         _list_is_ecn_congested.push_back(eventlist().now() / 1000);
 
@@ -1601,7 +1651,7 @@ void LcpSrc::processEpochEnd(simtime_picosec rtt) {
 
                 if (ecn_fraction_ewma > 0) {
                     if (is_phantom_only_congestion) {
-                        beta *= 0.2; // Scale beta if phantom only congestion
+                        beta *= 0.35; // Scale beta if phantom only congestion
                     } 
                 }
                 if (did_increase) {
@@ -1838,7 +1888,7 @@ const string &LcpSrc::nodename() { return _nodename; }
 
 void LcpSrc::connect(Route *routeout, Route *routeback, LcpSink &sink, simtime_picosec starttime) {
     if (_route_strategy == SINGLE_PATH || _route_strategy == ECMP_FIB || _route_strategy == ECMP_FIB_ECN ||
-    _route_strategy == REACTIVE_ECN || _route_strategy == ECMP_RANDOM2_ECN || _route_strategy == ECMP_RANDOM_ECN || _route_strategy == SIMPLE_SUBFLOW || _route_strategy == SCATTER_RANDOM) {
+    _route_strategy == REACTIVE_ECN || _route_strategy == ECMP_RANDOM2_ECN || _route_strategy == ECMP_RANDOM_ECN || _route_strategy == SIMPLE_SUBFLOW || _route_strategy == PLB || _route_strategy == SCATTER_RANDOM) {
         assert(routeout);
         _route = routeout;
         // cout << "Source connect: " << _route << endl;
@@ -2371,16 +2421,22 @@ void LcpSrc::retransmit_packet() {
 
 
             if (_subflow_reroute) {
-                int old_entropy = sp.entropy_used;
-                int new_entropy = -1;
+        
+                for (int i = 0; i < _subflow_last_ack.size(); i++) {
+                    if ((eventlist().now()) - _subflow_last_reroute[i] > _base_rtt && 
+                        (eventlist().now()) - _subflow_last_ack[i] > _base_rtt * 0.5) {
+                        _subflow_last_reroute[i] = eventlist().now();
+                        _subflow_entropies[i] = rand() % 250;
+                    } 
+                }                         
+            }
 
-                //printf("Entropy used is %d\n", old_entropy);
-
-                if ((eventlist().now()) - _subflow_last_reroute[old_entropy] > _base_rtt) {
-                    simtime_picosec last_re_route = _subflow_last_reroute[old_entropy];
-                    _subflow_last_reroute[old_entropy] = eventlist().now() - 0;
-                    _subflow_entropies[old_entropy] = rand() % 250;
-                }                  
+            if (_route_strategy == PLB) {
+                if (eventlist().now() > plb_timeout_wait) {
+                    plb_timeout_wait = eventlist().now() + _rto;
+                    plb_congested_rounds = 0;
+                    plb_entropy = rand() % 250;
+                }
             }
                      
             // only count when the timedout packet has the potential to be retransmitted
@@ -2764,6 +2820,7 @@ void LcpSink::send_ack(simtime_picosec ts, bool marked, UecAck::seq_t seqno, Uec
     case ECMP_RANDOM2_ECN:
     case SCATTER_RANDOM:
     case SIMPLE_SUBFLOW:
+    case PLB:
     case ECMP_RANDOM_ECN:
         ack = UecAck::newpkt(_src->_flow, *_route, seqno, ackno, 0, _srcaddr);
 
@@ -2846,6 +2903,7 @@ void LcpSink::connect(LcpSrc &src, const Route *route) {
     case ECMP_RANDOM2_ECN:
     case SCATTER_RANDOM:
     case ECMP_RANDOM_ECN:
+    case PLB:
     case SIMPLE_SUBFLOW:
         assert(route);
         _route = route;
@@ -2874,6 +2932,7 @@ void LcpSink::set_paths(uint32_t no_of_paths) {
     case ECMP_FIB:
     case ECMP_FIB_ECN:
     case ECMP_RANDOM2_ECN:
+    case PLB:
     case SIMPLE_SUBFLOW:
     case REACTIVE_ECN:
         assert(_paths.size() == 0);

@@ -73,6 +73,7 @@ BBRSrc::BBRSrc(BBRLogger *logger, TrafficLogger *pktLogger, EventList &eventList
     _crt_path = 0;
     _flow_size = _mss * 934;
 
+    tracking_period = 30000000000 * 1;
     _next_pathid = 1;
 
     _bdp = (_base_rtt * LINK_SPEED_MODERN / 8) / 1000;
@@ -264,6 +265,17 @@ BBRSrc::~BBRSrc() {
         }
 
         MyFileCase4.close();
+
+        // Sending Rate
+        file_name = PROJECT_ROOT_PATH /
+                    ("output/sending_rate/sending_rate" + _name + "_" + std::to_string(tag) + ".txt");
+        std::ofstream MyFileSendingRate(file_name, std::ios_base::app);
+
+        for (const auto &p : list_sending_rate) {
+            MyFileSendingRate << p.first << "," << p.second << std::endl;
+        }
+
+        MyFileSendingRate.close();
 
         // bytes sent
         file_name = PROJECT_ROOT_PATH / ("output/bytes_sent/bytes_sent" + _name + "_" + std::to_string(tag) + ".txt");
@@ -1254,6 +1266,15 @@ void BBRSrc::processAck(BBRAck &pkt, bool force_marked) {
     }
 }
 
+void BBRSrc::track_sending_rate() {
+    if (eventlist().now() > last_track_ts + tracking_period) {
+        double rate = (double)(tracking_bytes * 8.0 / ((eventlist().now() - last_track_ts) / 1000));
+        list_sending_rate.push_back(std::make_pair(eventlist().now() / 1000, rate));
+        tracking_bytes = 0;
+        last_track_ts = eventlist().now();
+    }
+}
+
 uint64_t BBRSrc::get_unacked() {
     return _unacked;
     // uint64_t missing = 0;
@@ -1466,6 +1487,9 @@ void BBRSrc::send_packets() {
         _highest_sent += _mss;
         _packets_sent += _mss;
         _unacked += _mss;
+
+        track_sending_rate();
+        tracking_bytes += _mss;
         
         _bytes_sent += p->data_packet_size();
         _agg_bytes_sent += p->data_packet_size();
@@ -1697,6 +1721,9 @@ bool BBRSrc::resend_packet(std::size_t idx) {
     // crt = random() % _paths.size();
 
     p->set_pathid(_path_ids[crt]);
+
+    track_sending_rate();
+    tracking_bytes += _mss;
         
     _bytes_sent += p->data_packet_size();
     _agg_bytes_sent += p->data_packet_size();

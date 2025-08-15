@@ -47,6 +47,7 @@ class PacketFlow : public Logged {
 enum RouteStrategy {
     NOT_SET,
     SINGLE_PATH,
+    PLB,
     SCATTER_PERMUTE,
     SCATTER_RANDOM,
     PULL_BASED,

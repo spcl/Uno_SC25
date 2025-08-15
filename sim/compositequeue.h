@@ -16,6 +16,7 @@
 #include "loggertypes.h"
 #include "network.h"
 #include <unordered_map> // Make sure to include this!
+#include <unordered_set>
 #include "queue.h"
 #include <list>
 #include "map"
@@ -118,6 +119,11 @@ class CompositeQueue : public Queue {
     int dropped_in_a_row = 0;
     static int force_kmin;
     static int force_kmax;
+    static bool failure_multiples;
+
+    int block_size = 10;
+    int currentPacketIndex = 0;              // Position within the current block
+    std::unordered_set<int> dropIndices;
 
   protected:
     // Mechanism

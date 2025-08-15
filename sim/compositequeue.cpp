@@ -10,6 +10,8 @@
 #include <sstream>
 #include <stdio.h>
 #include <utility>
+#include <random>
+#include <chrono>
 
 bool CompositeQueue::_drop_when_full = true;
 bool CompositeQueue::_use_mixed = false;
@@ -24,6 +26,7 @@ int CompositeQueue::force_kmin = -1;
 int CompositeQueue::force_kmax = -1;
 
 bool CompositeQueue::_phantom_observe = false;
+bool CompositeQueue::failure_multiples = false;
 
 int CompositeQueue::_phantom_kmin = 20;
 int CompositeQueue::_phantom_kmax = 80;
@@ -464,22 +467,85 @@ void CompositeQueue::receivePacket(Packet &pkt) {
     if (is_failing) {
         pkt.free();
         dropped_in_a_row++;
-        //printf("Dropping Packet EV %d - Subflow %d - Time %f - Sequence %d - Queue %s\n", pkt.pathid(), pkt.subflow_number, timeAsUs(eventlist().now()), pkt.id(), _nodename.c_str());
+       //printf("Dropping Packet EV %d - Subflow %d - Time %f - Sequence %d - Queue %s\n", pkt.pathid(), pkt.subflow_number, timeAsUs(eventlist().now()), pkt.id(), _nodename.c_str());
         return;
     } else {
         dropped_in_a_row = 0;
-
         //printf("Regurlar Packet EV %d - Subflow %d - Time %f\n", pkt.pathid(), pkt.subflow_number, timeAsUs(eventlist().now()));
     }
 
+
+    if (failure_multiples && _nodename.find("BORDER") != std::string::npos) {
+
+
+        /* if (_nodename.find("BORDER") != std::string::npos) {
+            int number1 = rand() % 1000;
+            if (number1 <= 1 && pkt.size() > 100) {
+                pkt.free();
+                return;
+            }   
+        } */
+        
+
+        // Measured probabilities for Distance 1 (from your table):
+        const double p_loss1 = 3.0e-4;           // Exactly 1 drop per block
+        const double p_loss2 = 7.5e-5;           // Exactly 2 drops per block
+        const double p_loss3 = 1.6e-5;           // Exactly 3 drops per block
+        const double p_drop0 = 1.0 - (p_loss1 + p_loss2 + p_loss3); // 0 drop probability
+
+        static std::mt19937 gen(static_cast<unsigned>(
+            std::chrono::system_clock::now().time_since_epoch().count()));
+        static std::uniform_real_distribution<double> dis(0.0, 1.0);
+
+        // If at the start of a block, decide how many drops for this block.
+        if (currentPacketIndex == 0) {
+            dropIndices.clear();
+            double r = dis(gen);
+            int dropCount = 0;
+            if (r < p_drop0) {
+                dropCount = 0;
+            } else if (r < p_drop0 + p_loss1) {
+                dropCount = 1;
+            } else if (r < p_drop0 + p_loss1 + p_loss2) {
+                dropCount = 2;
+            } else {
+                printf("Dropping 3 packets\n");
+                dropCount = 3;
+            }
+            // If we need drops, pick dropCount unique packet indices from 0 to blockSize-1.
+            if (dropCount > 0) {
+                std::uniform_int_distribution<int> index_dis(0, block_size - 1);
+                while (dropIndices.size() < static_cast<size_t>(dropCount)) {
+                    dropIndices.insert(index_dis(gen));
+                }
+            }
+        }
+
+        bool dropPacket = (dropIndices.find(currentPacketIndex) != dropIndices.end());
+        if (dropPacket) {
+            currentPacketIndex++;
+            if (currentPacketIndex >= block_size) {
+                currentPacketIndex = 0;
+            }
+            //printf("Failure\n");
+            pkt.free();
+            return;
+        } else {
+            currentPacketIndex++;
+            if (currentPacketIndex >= block_size) {
+                currentPacketIndex = 0;
+            }
+        }
+
+    }
+
+    
 
 
     int pkt_queue_idx1 = max(0, pkt.queue_idx());  
     if (_queuesize_low[pkt_queue_idx1] > 100000) {
         //printf("Queue %s is at %d - Max Size %d\n", _nodename.c_str(), _queuesize_low[pkt_queue_idx1], _maxsize);
     }
-
-
 
     if (dropped_in_a_row > 4) {
         //printf("Dropped in a row %d - Time %f\n", dropped_in_a_row, timeAsUs(eventlist().now()));

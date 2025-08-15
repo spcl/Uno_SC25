@@ -11,12 +11,12 @@ def run_benchmark(cm_file, variant):
     # Use the basename of the .cm file and variant to create unique output and logging folder names
     base_name = os.path.splitext(os.path.basename(cm_file))[0]
     output_file = f"{variant}_{base_name}.tmp"
-    logging_folder = os.path.join("..", "phantomQ", f"{base_name}_{variant}")
-    
+    logging_folder = os.path.join("phantomQ", f"{base_name}_{variant}")
+
     # For the "uno" variant, use the provided complete parameters
     if variant == "uno":
         cmd = [
-            "../sim/datacenter/htsim_lcp_entry_modern",
+            "sim/datacenter/htsim_lcp_entry_modern",
             "-o", "uec_entry",
             "-seed", "215",
             "-queue_type", "composite",
@@ -26,9 +26,9 @@ def run_benchmark(cm_file, variant):
             "-collect_data", "1",
             "-topology", "interdc",
             "-os_border", "16",
-            "-strat", "ecmp_classic",
+            "-strat", "rand",
             "-linkspeed", "100000",
-            "-topo", "../lcp/configs/topos/fat_tree_100Gbps.topo",
+            "-topo", "lcp/configs/topos/fat_tree_100Gbps.topo",
             "-tm", cm_file,
             "-noRto",
             "-queueSizeRatio", "1",
@@ -57,7 +57,7 @@ def run_benchmark(cm_file, variant):
         ]
     elif variant == "gemini":
         cmd = [
-            "../sim/datacenter/htsim_lcp_entry_modern",
+            "sim/datacenter/htsim_lcp_entry_modern",
             "-o", "uec_entry",
             "-queue_type", "composite",
             "-hop_latency", "1000",
@@ -66,9 +66,9 @@ def run_benchmark(cm_file, variant):
             "-collect_data", "1",
             "-topology", "interdc",
             "-os_border", "16",
-            "-strat", "ecmp_classic",
+            "-strat", "rand",
             "-linkspeed", "100000",
-            "-topo", "../lcp/configs/topos/fat_tree_100Gbps.topo",
+            "-topo", "lcp/configs/topos/fat_tree_100Gbps.topo",
             "-tm", cm_file,
             "-logging-folder", logging_folder,
             "-seed", "15",
@@ -93,7 +93,7 @@ def run_benchmark(cm_file, variant):
         ]
     elif variant == "bbr":
         cmd = [
-            "../sim/datacenter/htsim_lcp_entry_modern",
+            "sim/datacenter/htsim_lcp_entry_modern",
             "-o", "uec_entry",
             "-queue_type", "composite",
             "-hop_latency", "1000",
@@ -102,9 +102,9 @@ def run_benchmark(cm_file, variant):
             "-collect_data", "1",
             "-topology", "interdc",
             "-os_border", "16",
-            "-strat", "ecmp_classic",
+            "-strat", "rand",
             "-linkspeed", "100000",
-            "-topo", "../lcp/configs/topos/fat_tree_100Gbps.topo",
+            "-topo", "lcp/configs/topos/fat_tree_100Gbps.topo",
             "-tm", cm_file,
             "-logging-folder", logging_folder,
             "-seed", "15",
@@ -219,9 +219,9 @@ def plot_results(bench_results):
         ax.set_ylim(ylim[0], ylim[1]*1.025)
     
     plt.tight_layout()
-    plt.savefig("flow_completion_time_benchmark.png", dpi=300)
-    plt.savefig("flow_completion_time_benchmark.pdf", dpi=300)
-    plt.show()
+    plt.savefig("artifact_results/fig8/flow_completion_time_benchmark.png", dpi=300)
+    plt.savefig("artifact_results/fig8/flow_completion_time_benchmark.pdf", dpi=300)
+    #plt.show()
 
 def main():
     parser = argparse.ArgumentParser(description="Run benchmark simulations and plot flow completion times")
@@ -230,9 +230,9 @@ def main():
     
     # List of .cm files used for benchmark simulations
     cm_files = [
-        "../lcp/configs/tms/simple/0_8_1000MB.cm",
-        "../lcp/configs/tms/simple/8_0_1000MB.cm",
-        "../lcp/configs/tms/simple/4_4_1000MB.cm"
+        "lcp/configs/tms/simple/0_8_1000MB.cm",
+        "lcp/configs/tms/simple/8_0_1000MB.cm",
+        "lcp/configs/tms/simple/4_4_1000MB.cm"
     ]
     
     variants = ["uno", "gemini", "bbr"]

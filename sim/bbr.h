@@ -99,6 +99,7 @@ class BBRSrc : public PacketSink, public EventSource, public TriggerTarget {
     static void set_fast_drop(bool value) { use_fast_drop = value; }
     static void set_use_pacing(int value) { use_pacing = value; }
     static void set_pacing_delay(simtime_picosec value) { pacing_delay = value * 1000; }
+    void track_sending_rate();
 
     static void set_explicit_rtt(int value) { explicit_base_rtt = value; }
     static void set_explicit_bdp(int value) { explicit_bdp = value; }
@@ -173,6 +174,11 @@ class BBRSrc : public PacketSink, public EventSource, public TriggerTarget {
     int current_pkt = 0;
     bool pause_send = false;
     bool paced_packet = false;
+
+    bool track_rate = true;
+    simtime_picosec tracking_period = 0;
+    simtime_picosec last_track_ts = 0;
+    uint64_t tracking_bytes = 0;
 
     // Custom Parameters
     static std::string queue_type;
@@ -310,6 +316,7 @@ class BBRSrc : public PacketSink, public EventSource, public TriggerTarget {
     vector<pair<simtime_picosec, uint64_t>> _list_fast_decrease;
     vector<pair<simtime_picosec, int>> us_to_cs;
     vector<pair<simtime_picosec, int>> ls_to_us;
+    vector<pair<simtime_picosec, double>> list_sending_rate;
 
     vector<const Route *> _good_entropies;
     bool _paced_packet = false;

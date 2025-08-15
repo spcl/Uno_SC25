@@ -6,29 +6,32 @@ import numpy as np
 import matplotlib.pyplot as plt
 import argparse
 import re
+import matplotlib
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
 
-def run_benchmark(cm_file, variant):
+def run_benchmark(cm_file, variant, os_value):
     # Use the basename of the .cm file and variant to create unique output and logging folder names
     base_name = os.path.splitext(os.path.basename(cm_file))[0]
     output_file = f"{variant}_{base_name}.tmp"
-    logging_folder = os.path.join("..", "phantomQ", f"{base_name}_{variant}")
-    
-    # For the "uno" variant, use the provided complete parameters
+    logging_folder = os.path.join("phantomQ", f"{base_name}_{variant}")
+
+    # os_value is now passed in from the command line
     if variant == "uno":
         cmd = [
-            "../sim/datacenter/htsim_lcp_entry_modern",
+            "sim/datacenter/htsim_lcp_entry_modern",
             "-o", "uec_entry",
             "-seed", "215",
             "-queue_type", "composite",
             "-hop_latency", "1000",
             "-switch_latency", "0",
             "-nodes", "128",
-            "-collect_data", "1",
+            "-collect_data", "0",
             "-topology", "interdc",
-            "-os_border", "16",
+            "-os_border", os_value,
             "-strat", "ecmp_classic",
             "-linkspeed", "100000",
-            "-topo", "../lcp/configs/topos/fat_tree_100Gbps.topo",
+            "-topo", "lcp/configs/topos/fat_tree_100Gbps.topo",
             "-tm", cm_file,
             "-noRto",
             "-queueSizeRatio", "1",
@@ -52,25 +55,64 @@ def run_benchmark(cm_file, variant):
             "-phantom_kmin", "2",
             "-phantom_kmax", "60",
             "-forceQueueSize", "1000000",
-            "-logging-folder", logging_folder,
+            "-noFi"
+        ]
+    elif variant == "UnoLB":
+        cmd = [
+            "sim/datacenter/htsim_lcp_entry_modern",
+            "-o", "uec_entry",
+            "-seed", "215",
+            "-queue_type", "composite",
+            "-hop_latency", "1000",
+            "-switch_latency", "0",
+            "-nodes", "128",
+            "-collect_data", "0",
+            "-topology", "interdc",
+            "-os_border", os_value,
+            # Here we set strat to "simple_subflow" instead of "ecmp_classic"
+            "-strat", "simple_subflow",
+            "-linkspeed", "100000",
+            "-topo", "lcp/configs/topos/fat_tree_100Gbps.topo",
+            "-tm", cm_file,
+            "-noRto",
+            "-queueSizeRatio", "1",
+            "-IntraFiT", "100",
+            "-InterFiT", "2500",
+            "-interKmax", "60",
+            "-interKmin", "20",
+            "-ecnAlpha", "0.65",
+            "-usePacing", "1",
+            "-end_time", "2860",
+            "-lcpK", "6",
+            "-interEcn",
+            "-mdRTT", "0.0003515625",
+            "-interdcDelay", "886500",
+            "-kmin", "10",
+            "-kmax", "80",
+            "-lcpAlgo", "aimd_phantom",
+            "-use_phantom", "1",
+            "-phantom_size", "22400515",
+            "-phantom_slowdown", "5",
+            "-phantom_kmin", "2",
+            "-phantom_kmax", "60",
+            "-forceQueueSize", "1000000",
             "-noFi"
         ]
     elif variant == "gemini":
         cmd = [
-            "../sim/datacenter/htsim_lcp_entry_modern",
+            "sim/datacenter/htsim_lcp_entry_modern",
             "-o", "uec_entry",
             "-queue_type", "composite",
             "-hop_latency", "1000",
             "-switch_latency", "0",
             "-nodes", "128",
-            "-collect_data", "1",
+            "-collect_data", "0",
             "-topology", "interdc",
-            "-os_border", "16",
+            "-os_border", os_value,
             "-strat", "ecmp_classic",
             "-linkspeed", "100000",
-            "-topo", "../lcp/configs/topos/fat_tree_100Gbps.topo",
+            "-topo", "lcp/configs/topos/fat_tree_100Gbps.topo",
             "-tm", cm_file,
-            "-logging-folder", logging_folder,
             "-seed", "15",
             "-noFi",
             "-noQaInter",
@@ -93,20 +135,19 @@ def run_benchmark(cm_file, variant):
         ]
     elif variant == "bbr":
         cmd = [
-            "../sim/datacenter/htsim_lcp_entry_modern",
+            "sim/datacenter/htsim_lcp_entry_modern",
             "-o", "uec_entry",
             "-queue_type", "composite",
             "-hop_latency", "1000",
             "-switch_latency", "0",
             "-nodes", "128",
-            "-collect_data", "1",
+            "-collect_data", "0",
             "-topology", "interdc",
-            "-os_border", "16",
+            "-os_border", os_value,
             "-strat", "ecmp_classic",
             "-linkspeed", "100000",
-            "-topo", "../lcp/configs/topos/fat_tree_100Gbps.topo",
+            "-topo", "lcp/configs/topos/fat_tree_100Gbps.topo",
             "-tm", cm_file,
-            "-logging-folder", logging_folder,
             "-seed", "15",
             "-noFi",
             "-noQaInter",
@@ -163,79 +204,79 @@ def parse_metrics(output_file):
         return avg, p99
     return None, None
 
-def plot_results(bench_results):
-    # bench_results is a dict keyed by base_name.
-    # Each value is another dict mapping variant keys ("uno", "gemini", "bbr") to a tuple: (avg_fct, p99_fct).
-    # The x-axis represents the metrics ("Avg FCT", "P99 FCT") and each group has three bars (one per algorithm).
-    algo_keys = ["uno", "gemini", "bbr"]
-    algo_names = ["UnoCC", "Gemini", "MPRDMA+BBR"]
-    colors = ["#b391b5", "#4494e4", "#ff8f80"]
+def plot_results(bench_results, os_value):
+    # bench_results is a dict keyed by base_name; for each benchmark it maps each variant
+    # to a tuple: (avg_fct, p99_fct). We now include 4 algorithms.
+    algo_keys = ["uno", "UnoLB", "gemini", "bbr"]
+    algo_names = ["Uno+ECMP", "Uno", "Gemini", "MPRDMA+BBR"]
+    colors = ["#b391b5", "#99d2f2", "#4494e4", "#ff8f80"]
     metrics = ["Avg FCT", "P99 FCT"]
 
     import matplotlib.pyplot as plt
     plt.rcParams['font.size'] *= 1.2
 
-    # Use the specified figure size for 3 subplots
-    fig, axes = plt.subplots(1, 3, figsize=(13, 2.5), sharey=True)
+    # Use the specified figure size for a single plot
+    fig, ax = plt.subplots(figsize=(4.5, 3.5))
 
     bar_width = 0.2
     x = np.arange(len(metrics))  # positions for "Avg FCT" and "P99 FCT"
 
-    for j, (base, variants) in enumerate(bench_results.items()):
-        ax = axes[j]
+    for base, variants in bench_results.items():
         # Place grid lines behind the bars
         ax.set_axisbelow(True)
         for i, algo in enumerate(algo_keys):
             avg_val, p99_val = variants.get(algo, (None, None))
-            # Replace None values with 0 so that matplotlib can plot them
+            # Replace None values with 0 so matplotlib can plot them
             avg_val = avg_val if avg_val is not None else 0
             p99_val = p99_val if p99_val is not None else 0
             values = [avg_val, p99_val]
-            # Shift each algorithm's bars by (i-1)*bar_width
-            offset = (i - 1) * bar_width
+            # Center bars over x positions by centering the set of bars
+            offset = (i - (len(algo_keys) - 1) / 2) * bar_width
             bars = ax.bar(x + offset, values, bar_width,
-                          label=(algo_names[i] if j == 0 else None),
+                          label=algo_names[i],
                           color=colors[i])
-            # Annotate each bar with its value (two decimal digits) with a larger font size and in the same color as the bar
+            # Annotate each bar with its value (two decimal digits) in the same color as the bar
             for bar in bars:
                 height = bar.get_height()
-                ax.annotate(f"{height:.0f}",
+                ax.annotate(f"{height:.1f}",
                             xy=(bar.get_x() + bar.get_width() / 2, height),
                             xytext=(0, 3),
                             textcoords="offset points",
                             ha="center", va="bottom",
-                            fontsize=10,  # increased annotation font size
+                            fontsize=10,
                             color=colors[i])
         
-        ax.set_xticks(x)
-        ax.set_xticklabels(metrics)
-        if j == 0:
-            ax.set_ylabel("Completion Time (ms)")
-            # Place the legend at the bottom center of the subplot
-            ax.legend(ncol=2, loc='upper center', bbox_to_anchor=(0.5, 0.45))
-           
-        ax.grid(axis='y', linestyle='--', linewidth=0.5)
         ylim = ax.get_ylim()
         ax.set_ylim(ylim[0], ylim[1]*1.025)
+        ax.set_xticks(x)
+        ax.set_xticklabels(metrics)
+        ax.set_ylabel("Completion Time (ms)")
+        # Place the legend inside the plot (only one Axes) at the bottom center with 2 columns.
+        ax.legend(ncol=1, loc='lower center', bbox_to_anchor=(0.31, 0.57))
+        ax.grid(axis='y', linestyle='--', linewidth=0.5)
+        
     
     plt.tight_layout()
-    plt.savefig("flow_completion_time_benchmark.png", dpi=300)
-    plt.savefig("flow_completion_time_benchmark.pdf", dpi=300)
-    plt.show()
+    link_num = 128
+    if (os_value == "16"):
+        link_num = 8
+    plt.savefig(f"artifact_results/fig9/permutation_fct_128_link{link_num}.png", dpi=300)
+    plt.savefig(f"artifact_results/fig9/permutation_fct_128_link{link_num}.pdf", dpi=300)
+    #plt.show()
 
 def main():
     parser = argparse.ArgumentParser(description="Run benchmark simulations and plot flow completion times")
     parser.add_argument("--plot-only", action="store_true", help="Only plot results, without running simulations")
+    parser.add_argument("--os-value", type=str, default="1",
+                        help="OS border value to pass to the simulator")
     args = parser.parse_args()
     
     # List of .cm files used for benchmark simulations
     cm_files = [
-        "../lcp/configs/tms/simple/0_8_1000MB.cm",
-        "../lcp/configs/tms/simple/8_0_1000MB.cm",
-        "../lcp/configs/tms/simple/4_4_1000MB.cm"
+        "lcp/configs/tms/simple/custom_256_5mb.cm"
     ]
     
-    variants = ["uno", "gemini", "bbr"]
+    variants = ["uno", "UnoLB", "gemini", "bbr"]
     bench_results = {}
     
     # Define the number of worker threads we want to use
@@ -246,7 +287,7 @@ def main():
             futures = {}
             for cm in cm_files:
                 for variant in variants:
-                    futures[executor.submit(run_benchmark, cm, variant)] = (cm, variant)
+                    futures[executor.submit(run_benchmark, cm, variant, args.os_value)] = (cm, variant)
             for future in concurrent.futures.as_completed(futures):
                 cm, variant = futures[future]
                 try:
@@ -273,7 +314,7 @@ def main():
     
     # Sort by base_name to enforce subplot order
     bench_results = dict(sorted(bench_results.items()))
-    plot_results(bench_results)
+    plot_results(bench_results, args.os_value)
 
 if __name__ == '__main__':
     main()

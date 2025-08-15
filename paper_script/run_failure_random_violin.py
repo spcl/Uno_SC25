@@ -205,7 +205,7 @@ def main():
     variants = ["spraying", "spraying_ec", "uno", "uno_ec", "plb", "plb_ec"]
 
     # Set the number of seeds as a variable (30)
-    num_seeds = 100
+    num_seeds = 30
     start_seed = 333
     seeds = list(range(start_seed, start_seed + num_seeds))
     

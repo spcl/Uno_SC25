@@ -322,6 +322,9 @@ int main(int argc, char **argv) {
         } else if (!strcmp(argv[i], "-interEcn")) {
             cout << "Using ECN for inter-DC queues" << endl;
             use_inter_dc_ecn = true;
+        } else if (!strcmp(argv[i], "-multiple_failures")) {
+            cout << "Using ECN for inter-DC queues" << endl;
+            CompositeQueue::failure_multiples = true;
         } else if (!strcmp(argv[i], "-dctcp")) {
             LcpSrc::using_dctcp = true;
             cout << "Using DCTCP" << endl;
@@ -691,6 +694,10 @@ int main(int argc, char **argv) {
                 FatTreeInterDCSwitch::set_strategy(FatTreeInterDCSwitch::ECMP);
             } else if (!strcmp(argv[i + 1], "simple_subflow")) {
                 route_strategy = SIMPLE_SUBFLOW;
+                FatTreeSwitch::set_strategy(FatTreeSwitch::ECMP);
+                FatTreeInterDCSwitch::set_strategy(FatTreeInterDCSwitch::ECMP);
+            } else if (!strcmp(argv[i + 1], "plb")) {
+                route_strategy = PLB;
                 FatTreeSwitch::set_strategy(FatTreeSwitch::ECMP);
                 FatTreeInterDCSwitch::set_strategy(FatTreeInterDCSwitch::ECMP);
             } else if (!strcmp(argv[i + 1], "ecmp_host_random2_ecn")) {
@@ -1321,6 +1328,7 @@ int main(int argc, char **argv) {
                         case ECMP_FIB_ECN:
                         case ECMP_RANDOM2_ECN:
                         case SIMPLE_SUBFLOW:
+                        case PLB:
                         case ECMP_RANDOM_ECN:
                         case SINGLE_PATH:
                         case SCATTER_RANDOM:
@@ -1452,6 +1460,7 @@ int main(int argc, char **argv) {
                         case ECMP_FIB:
                         case ECMP_FIB_ECN:
                         case SIMPLE_SUBFLOW:
+                        case PLB:
                         case ECMP_RANDOM_ECN:
                         case ECMP_RANDOM2_ECN:
                         case SINGLE_PATH:
@@ -1649,6 +1658,7 @@ int main(int argc, char **argv) {
                         case ECMP_RANDOM2_ECN:
                         case SINGLE_PATH:
                         case SIMPLE_SUBFLOW:
+                        case PLB:
                         case ECMP_RANDOM_ECN:
                         case SCATTER_RANDOM:
                         case REACTIVE_ECN: {
@@ -1978,6 +1988,7 @@ int main(int argc, char **argv) {
                     switch (route_strategy) {
                         case ECMP_FIB:
                         case ECMP_FIB_ECN:
+                        case PLB:
                         case ECMP_RANDOM2_ECN:
                         case SINGLE_PATH:
                         case SIMPLE_SUBFLOW:
@@ -2170,6 +2181,7 @@ int main(int argc, char **argv) {
                         case ECMP_RANDOM2_ECN:
                         case SINGLE_PATH:
                         case SCATTER_RANDOM:
+                        case PLB:
                         case SIMPLE_SUBFLOW:
                         case ECMP_RANDOM_ECN:
                         case REACTIVE_ECN: {

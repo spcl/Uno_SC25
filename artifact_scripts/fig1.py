@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 from matplotlib.lines import Line2D
 
+import matplotlib
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
 # Parameters
 bandwidth = 400e9 / 8   # 400 Gbps in bytes per second
 
@@ -101,4 +104,4 @@ ax.add_artist(legend_intra)  # Add the first legend back to the axes
 
 plt.savefig('artifact_results/fig1/motivation_latency.png', dpi=300, bbox_inches='tight')
 plt.savefig('artifact_results/fig1/motivation_latency.pdf', dpi=300, bbox_inches='tight')
-plt.show()  
+#plt.show()  

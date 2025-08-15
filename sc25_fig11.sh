@@ -1,9 +1,10 @@
 #!/bin/bash
 
 #8x, 32x, 128x, 512x
-mkdir exp_data
-mkdir exp_data/incast_experiment_fat_tree_100Gbps
-mkdir fig11_results
+mkdir -p artifact_results/fig11
+mkdir -p exp_data
+mkdir -p exp_data/incast_experiment_fat_tree_100Gbps
+mkdir -p fig11_results
 
 # Gemini
 echo "Simulating Gemini 40% load disting inter- to intra-RTT ratios...\n"
@@ -52,3 +53,5 @@ python3 lcp/scripts/plot_script_micro.py --input_folder exp_data/incast_experime
 python3 lcp/scripts/plot_script_micro.py --input_folder exp_data/incast_experiment_fat_tree_100Gbps/tm=websearchIntra_AlibabaInter_5000f_40l-lb=simple_subflow-os_b=16-noFi-noRto-ForceQ=1000000-wanKmin=25-wanKmin=75-kmin=25-kmax=75-lcpAlgo=aimd_phantom-usePh-PhSize=22400515-PhSlow=10-PhKmin=2-PhKmax=60-alpha=0.5-pace-interEcn-K=6-delay=214500/output/ --fct_only > ./fig11_results/uno_32x.txt
 python3 lcp/scripts/plot_script_micro.py --input_folder exp_data/incast_experiment_fat_tree_100Gbps/tm=websearchIntra_AlibabaInter_5000f_40l-lb=simple_subflow-os_b=16-noFi-noRto-ForceQ=1000000-wanKmin=25-wanKmin=75-kmin=25-kmax=75-lcpAlgo=aimd_phantom-usePh-PhSize=22400515-PhSlow=10-PhKmin=2-PhKmax=60-alpha=0.5-pace-interEcn-K=6-delay=886500/output/ --fct_only > ./fig11_results/uno_128x.txt
 python3 lcp/scripts/plot_script_micro.py --input_folder exp_data/incast_experiment_fat_tree_100Gbps/tm=websearchIntra_AlibabaInter_5000f_40l-lb=simple_subflow-os_b=16-noFi-noRto-ForceQ=1000000-wanKmin=25-wanKmin=75-kmin=25-kmax=75-lcpAlgo=aimd_phantom-usePh-PhSize=22400515-PhSlow=10-PhKmin=2-PhKmax=60-alpha=0.5-pace-interEcn-K=6-delay=3574500/output/ --fct_only > ./fig11_results/uno_512x.txt
+
+python3 artifact_scripts/fig11.py 
