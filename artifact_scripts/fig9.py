@@ -204,7 +204,7 @@ def parse_metrics(output_file):
         return avg, p99
     return None, None
 
-def plot_results(bench_results, os_value):
+def plot_results(bench_results, os_value, show_legend):
     # bench_results is a dict keyed by base_name; for each benchmark it maps each variant
     # to a tuple: (avg_fct, p99_fct). We now include 4 algorithms.
     algo_keys = ["uno", "UnoLB", "gemini", "bbr"]
@@ -251,8 +251,9 @@ def plot_results(bench_results, os_value):
         ax.set_xticks(x)
         ax.set_xticklabels(metrics)
         ax.set_ylabel("Completion Time (ms)")
-        # Place the legend inside the plot (only one Axes) at the bottom center with 2 columns.
-        ax.legend(ncol=1, loc='lower center', bbox_to_anchor=(0.31, 0.57))
+        # Conditionally place the legend inside the plot at the bottom center
+        if show_legend:
+            ax.legend(ncol=1, loc='lower center', bbox_to_anchor=(0.31, 0.57))
         ax.grid(axis='y', linestyle='--', linewidth=0.5)
         
     
@@ -269,6 +270,8 @@ def main():
     parser.add_argument("--plot-only", action="store_true", help="Only plot results, without running simulations")
     parser.add_argument("--os-value", type=str, default="1",
                         help="OS border value to pass to the simulator")
+    parser.add_argument("--show-legend", action="store_true",
+                        help="Show legend in the plot")
     args = parser.parse_args()
     
     # List of .cm files used for benchmark simulations
@@ -314,7 +317,7 @@ def main():
     
     # Sort by base_name to enforce subplot order
     bench_results = dict(sorted(bench_results.items()))
-    plot_results(bench_results, args.os_value)
+    plot_results(bench_results, args.os_value, args.show_legend)
 
 if __name__ == '__main__':
     main()

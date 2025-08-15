@@ -194,8 +194,8 @@ def plot_results(bench_results):
     results_folder = "results"
     if not os.path.exists(results_folder):
         os.makedirs(results_folder)
-    plt.savefig("artifact_results/fig12/random_drops_violin.png", dpi=300, bbox_inches="tight")
-    plt.savefig("artifact_results/fig12/random_drops_violin.pdf", dpi=300, bbox_inches="tight")
+    plt.savefig("artifact_results/fig12/random_drops_violin.png", bbox_inches="tight")
+    plt.savefig("artifact_results/fig12/random_drops_violin.pdf", bbox_inches="tight")
     #plt.show()
 
 def main():

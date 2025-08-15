@@ -202,8 +202,8 @@ def plot_results(bench_results):
     results_folder = "artifact_results/fig12/"
     if not os.path.exists(results_folder):
         os.makedirs(results_folder)
-    plt.savefig(os.path.join(results_folder, "ai_violin_mult_fail.png"), dpi=300, bbox_inches="tight")
-    plt.savefig(os.path.join(results_folder, "ai_violin_mult_fail.pdf"), dpi=300, bbox_inches="tight")
+    plt.savefig(os.path.join(results_folder, "ai_violin_mult_fail.png"), bbox_inches="tight")
+    plt.savefig(os.path.join(results_folder, "ai_violin_mult_fail.pdf"), bbox_inches="tight")
     #plt.show()
 
 def main():
