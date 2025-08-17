@@ -214,7 +214,7 @@ def main():
     
     # Structure: { base_name: { variant: { "avg": [..], "p99": [..] } } }
     bench_results = {}
-    MAX_WORKERS = 9
+    MAX_WORKERS = 4
     
     if not args.plot_only:
         with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:

@@ -283,7 +283,7 @@ def main():
     bench_results = {}
     
     # Define the number of worker threads we want to use
-    MAX_WORKERS = 9
+    MAX_WORKERS = 4
     
     if not args.plot_only:
         with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
