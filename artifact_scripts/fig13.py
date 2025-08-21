@@ -37,7 +37,7 @@ data2 = data2 / 1000
 fig, axes = plt.subplots(2, 1, figsize=(5.4, 4))
 
 for idx, (ax, data) in enumerate(zip(axes, [data1, data2])):
-    # ax.set_yscale('log')                             # log scale disabled
+    ax.set_yscale('log')                             # log scale disabled
     for i in range(num_methods):
         offset = (i - num_methods/2) * bar_width + bar_width/2
         rects = ax.bar(indices + offset, data[:, i], bar_width, label=methods[i], color=colors[i])
@@ -72,7 +72,7 @@ for idx, (ax, data) in enumerate(zip(axes, [data1, data2])):
     ax.set_ylabel("Average FCT (ms)")
     if idx == 1:
         ax.set_ylabel("P99 FCT (ms)")
-    ax.set_ylim(0, 1.2 * data.max())                   # re-enable linear y-axis limits
+    ax.set_ylim(0, 2.55 * data.max())                   # re-enable linear y-axis limits
 
     # add a zoom‐in inset for values < 1 ms
     """ axins = inset_axes(ax, width="40%", height="30%", loc='upper left', borderpad=1)

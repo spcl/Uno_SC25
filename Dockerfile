@@ -12,7 +12,7 @@ WORKDIR /workspace
 COPY . .
 
 # Python deps
-RUN python3.11 -m pip install --no-cache-dir -r requirements.txt
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
 # build C++ targets from sim/
 WORKDIR /workspace/sim
