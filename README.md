@@ -4,7 +4,7 @@ Cloud computing and AI workloads are driving unprecedented demand for efficient 
 # Installing Requirements
 First install the required Python packages by running from the root directory of the repository the following command:
 ```
-pip install --no-cache-dir -r requirements.txt
+./sc25_pkg_install.sh
 ```
 
 Compile with the following instruction. To do so, we recommend running the following command line from the ```/sim``` directory (feel free to change the number of jobs being run in parallel).
