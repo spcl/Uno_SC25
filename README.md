@@ -1,19 +1,11 @@
-# PhantomCC: Smart Inter-Datacenter Congestion Control
-While many congestion control protocols exist to manage congestion intra-datacenter, they also usually struggle when dealing with inter-datacenter traffic where some of the packets might experience order of magnitudes of higher latency when moving between datacenters. This is mostly because of the long delay in feedback provided by the nature of such networks, the large variance between inter and intra-datacenter delays (and as a consequence BDP) and buffer sizes that are often much smaller than the expected inter-datacenter BDP. To solve these issues we propose PhantomCC, a novel congestion control algorithm that is tailored for inter-datacenter communication and uses packet trimming (or back-to-sender if available) as a loss signal. PhantomCC uses phantom queues to simulate the large BDP-sized queues of inter-datacenter traffic and to allow extra bandwidth headroom. Results show how PhantomCC provides an improvement both in the average flow completion times and in the number of packet losses.
+# Uno: A One-Stop Solution for Inter- and Intra-Datacenter Congestion Control and Reliable Connectivity
+Cloud computing and AI workloads are driving unprecedented demand for efficient communication within and across datacenters. However, the coexistence of intra- and inter-datacenter traffic within datacenters plus the disparity between the RTTs of intra- and inter-datacenter networks complicates congestion management and traffic routing. Particularly, faster congestion responses of intra-datacenter traffic causes rate unfairness when competing with slower inter-datacenter flows. Additionally, inter-datacenter messages suffer from slow loss recovery and, thus, require reliability. Existing solutions overlook these challenges and handle inter- and intra-datacenter congestion with separate control loops or at different granularities. We propose Uno, a unified system for both inter- and intra-DC environments that integrates a transport protocol for rapid congestion reaction and fair rate control with a load balancing scheme that combines erasure coding and adaptive routing. Our findings show that Uno significantly improves the completion times of both inter- and intra-DC flows compared to state-of-the-art methods such as Gemini.
 
-# htsim Network Simulator
-
-htsim is a high performance discrete event simulator, inspired by ns2, but much faster, primarily intended to examine congestion control algorithm behaviour.  It was originally written by [Mark Handley](http://www0.cs.ucl.ac.uk/staff/M.Handley/) to allow [Damon Wishik](https://www.cl.cam.ac.uk/~djw1005/) to examine TCP stability issues when large numbers of flows are multiplexed.  It was extended by [Costin Raiciu](http://nets.cs.pub.ro/~costin/) to examine [Multipath TCP performance](http://nets.cs.pub.ro/~costin/files/mptcp-nsdi.pdf) during the MPTCP standardization process, and models of datacentre networks were added to [examine multipath transport](http://nets.cs.pub.ro/~costin/files/mptcp_dc_sigcomm.pdf) in a variety of datacentre topologies.  [NDP](http://nets.cs.pub.ro/~costin/files/ndp.pdf) was developed using htsim, and simple models of DCTCP, DCQCN were added for comparison.  Later htsim was adopted by Correct Networks (now part of Broadcom) to develop [EQDS](http://nets.cs.pub.ro/~costin/files/eqds.pdf), and switch models were improved to allow a variety of forwarding methods.  Support for a simple RoCE model, PFC, Swift and HPCC were added.
-
-## The basics
-
-There are some limited instructions in the [wiki](https://github.com/Broadcom/csg-htsim/wiki).  
-
-htsim is written in C++, and has no dependencies.  It should compile and run with g++ or clang on MacOS or Linux.  To compile htsim, cd into the sim directory and run make.
-
-To get started with running experiments, take a look in the experiments directory where there are some examples.  These examples generally require bash, python3 and gnuplot.
-
-## Getting started with htsim
+# Installing Requirements
+First install the required Python packages by running from the root directory of the repository the following command:
+```
+pip install --no-cache-dir -r requirements.txt
+```
 
 Compile with the following instruction. To do so, we recommend running the following command line from the ```/sim``` directory (feel free to change the number of jobs being run in parallel).
 
@@ -21,11 +13,24 @@ Compile with the following instruction. To do so, we recommend running the follo
 make clean && cd datacenter/ && make clean && cd .. && make -j 8 && cd datacenter/ && make -j 8 && cd ..
 ```
 
-It is then possible to run htsim by using three possible methods:
-- Using connection matrixes. Details [here](https://github.com/Broadcom/csg-htsim/wiki).
-- Using C++ code to setup the simulation directly.
-- Using LGS. See the following paragraphs for details.
+# Testing the artifacts
+To test the artifacts we provide a series of bash files that can be run from the root directory of the project. To reproduce most of the key results of the paper without having to wait for too long, we provide a bash script that runs quickly (1-2 hrs expected runtime) and generates most of the results present in the paper. To run it, use:
+```
+./sc25_quick_validation.sh
+```
+Results are automatically generated in the ```artifact_results/``` folder.
 
-## Usage relevant for the artifact
-We provide Python scripts in the ```plotting/``` folder to run the various experiments.
-
+# Running the Docker container
+If running the code from the provided Docker container (https://doi.org/10.5281/zenodo.15916080), these steps are necessary:
+```
+sudo docker load -i uno_container.tar.gz
+sudo docker run -it uno:1.0
+```
+If viewing images such as plots inside the container is problematic, it is possible to transfer that file to the host machine using:
+```
+sudo docker cp <containerId>:/file/path/within/container /host/path/target
+```
+It is possible to obtain the ```<containerId>``` by running
+```
+sudo docker ps
+```
