@@ -91,6 +91,6 @@ for idx, (ax, data) in enumerate(zip(axes, [data1, data2])):
 axes[1].legend(loc='lower left', ncol=2, fontsize=9.7)
 
 plt.tight_layout()
-plt.savefig("artifact_results/fig13/diff_queue_sizes.png", dpi=300)
-plt.savefig("artifact_results/fig13/diff_queue_sizes.pdf", dpi=300)
+plt.savefig("artifact_results/fig12/diff_queue_sizes.png", dpi=300)
+plt.savefig("artifact_results/fig12/diff_queue_sizes.pdf", dpi=300)
 #plt.show()

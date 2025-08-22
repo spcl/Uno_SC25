@@ -48,12 +48,12 @@ def run_benchmark(cm_file, variant, seed):
         "-lcpK", "6",
         "-interEcn",
         "-mdRTT", "0.0003515625",
-        "-interdcDelay", "3546000",
+        "-interdcDelay", "886500",
         "-kmin", "10",
         "-kmax", "80",
         "-lcpAlgo", "aimd_phantom",
         "-use_phantom", "1",
-        "-phantom_size", "89602060",
+        "-phantom_size", "22400515",
         "-phantom_slowdown", "5",
         "-phantom_kmin", "2",
         "-phantom_kmax", "60",
@@ -79,8 +79,6 @@ def run_benchmark(cm_file, variant, seed):
     
     if "-fail_one" not in cmd:
         cmd.append("-fail_one")
-    if "-multiple_failures" not in cmd:
-        cmd.append("-multiple_failures")
     
     print(f"Running benchmark ({variant}) with seed {seed}: {' '.join(cmd)}")
     with open(output_file, "w") as out:
@@ -125,7 +123,7 @@ def plot_results(bench_results):
     # Hatch pattern for EC variants
     ec_hatch = "///"
     
-    # List of all variants and their display labels.
+    # List of all variants and their display names.
     algo_keys = ["spraying", "spraying_ec", "uno", "uno_ec", "plb", "plb_ec"]
     algo_names = {
         "spraying": "Spraying",
@@ -135,20 +133,16 @@ def plot_results(bench_results):
         "plb": "PLB",
         "plb_ec": "PLB+EC"
     }
-    
-    # Ideal avg time against which slowdown is computed.
-    ideal = 10.4
 
     fig, ax = plt.subplots(figsize=(4.4, 2.25))
     x = np.arange(len(algo_keys))
     violin_width = 0.6  # Violin width
     
-    # We assume a single base name in bench_results.
+    # We assume a single base name in bench_results
     base_name = list(bench_results.keys())[0]
     for i, variant in enumerate(algo_keys):
         data_entry = bench_results[base_name].get(variant)
-        # Skip if there are no avg values.
-        if data_entry is None or len(data_entry["avg"]) == 0:
+        if data_entry is None or (len(data_entry["avg"]) == 0 and len(data_entry["p99"]) == 0):
             continue
 
         # Determine color and hatch based on variant.
@@ -156,18 +150,17 @@ def plot_results(bench_results):
         color = base_colors.get(base_alg, "#b391b5")
         hatch = ec_hatch if variant.endswith("_ec") else None
 
-        # Compute slowdown percentages for every seed.
-        # Slowdown = ((avg - ideal)/abs(ideal)) * 100
-        slowdown = [((val - ideal) / abs(ideal)) * 1 for val in data_entry["avg"]]
-        
+        # Combine Avg and P99 data from all seeds.
+        combined_data = data_entry["avg"] + data_entry["p99"]
         pos = x[i]
-        vp = ax.violinplot(slowdown, positions=[pos], widths=violin_width,
+        vp = ax.violinplot(combined_data, positions=[pos], widths=violin_width,
                              showmeans=True, showmedians=False, showextrema=True)
         
         # Set colors for each violin body using the correct color and hatch.
         for body in vp["bodies"]:
             body.set_facecolor(color)
             body.set_alpha(0.6)
+            # Set hatch if defined.
             if hatch is not None:
                 body.set_hatch(hatch)
         # Set colors for the other components.
@@ -176,34 +169,33 @@ def plot_results(bench_results):
         vp["cmaxes"].set_color(color)
         vp["cmins"].set_color(color)
         
-        # Add a marker for the 99th percentile for the slowdown values.
-        perc_99 = np.percentile(slowdown, 99)
+        # Add a marker for the 99th percentile.
+        percentiles_99 = np.percentile(combined_data, 99)
         ax.scatter(
             pos, 
-            perc_99, 
+            percentiles_99, 
             color="black", 
             marker="D",
             s=22,
             zorder=3,
             label="99th Percentile"
         )
-
+    
     ax.set_xticks(x)
     ax.set_xticklabels([algo_names[a] for a in algo_keys], rotation=45, ha="right")
-    # Change Y-axis label to slowdown percentage.
-    ax.set_ylabel("AllReduce Runtime\nOver Ideal Time")
+    ax.set_ylabel("FCT (ms)")
     ax.grid(axis="y", linestyle="--", linewidth=0.5)
     ylim = ax.get_ylim()
     ax.set_ylim(ylim[0], ylim[1] * 1.1)
     ax.grid(axis="y", linestyle="--", linewidth=0.5, zorder=0)
     ax.set_axisbelow(True)
 
-    # Save plots in the "results_ai" subfolder (create if necessary)
-    results_folder = "artifact_results/fig12/"
+    # Save plots in the "results" subfolder (create if necessary)
+    results_folder = "results"
     if not os.path.exists(results_folder):
         os.makedirs(results_folder)
-    plt.savefig(os.path.join(results_folder, "ai_violin_mult_fail.png"), bbox_inches="tight")
-    plt.savefig(os.path.join(results_folder, "ai_violin_mult_fail.pdf"), bbox_inches="tight")
+    plt.savefig("artifact_results/fig13/random_drops_violin.png", bbox_inches="tight")
+    plt.savefig("artifact_results/fig13/random_drops_violin.pdf", bbox_inches="tight")
     #plt.show()
 
 def main():
@@ -212,12 +204,12 @@ def main():
     parser.add_argument("--inter-only", action="store_true", help="Only consider flows going across datacenters")
     args = parser.parse_args()
     
-    cm_files = ["lcp/configs/tms/simple/ai.cm"]
+    cm_files = ["lcp/configs/tms/simple/fail_one.cm"]
     variants = ["spraying", "spraying_ec", "uno", "uno_ec", "plb", "plb_ec"]
 
-    # Set the number of seeds as a variable (50)
-    num_seeds = 10
-    start_seed = 111
+    # Set the number of seeds as a variable (30)
+    num_seeds = 100
+    start_seed = 333
     seeds = list(range(start_seed, start_seed + num_seeds))
     
     # Structure: { base_name: { variant: { "avg": [..], "p99": [..] } } }
@@ -256,13 +248,13 @@ def main():
             for variant in variants:
                 bench_results[base_name][variant] = {"avg": [], "p99": []}
                 for seed in seeds:
-                    outfile = f"results/{variant}_{base_name}_{seed}.tmp"
+                    outfile = f"results_random_drops/{variant}_{base_name}_{seed}.tmp"
                     avg, p99 = parse_metrics(outfile, inter_only=args.inter_only)
                     if avg is not None and p99 is not None:
                         bench_results[base_name][variant]["avg"].append(avg)
                         bench_results[base_name][variant]["p99"].append(p99)
     
-    # Instead, use the raw benchmark results for plotting the violin plots.
+    # Call the updated plotting function which uses raw distributions (violin plots)
     plot_results(bench_results)
 
 if __name__ == '__main__':
